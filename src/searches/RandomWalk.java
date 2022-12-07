@@ -8,7 +8,7 @@ import java.util.Random;
 
 import application.Maze;
 
-public class RandomWalk extends SearchAlgorithms{
+public class RandomWalk extends SearchAlgorithm{
 	public final double EXPLORE_BIAS = .999;
 	private Point next;
 	private Random rand;

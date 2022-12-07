@@ -1,11 +1,5 @@
 package application;
 import javafx.util.Duration;
-import searches.BFS;
-import searches.DFS;
-import searches.Greedy;
-import searches.Magic;
-import searches.RandomWalk;
-
 import java.awt.Point;
 
 import javafx.animation.KeyFrame;

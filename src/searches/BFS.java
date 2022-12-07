@@ -7,7 +7,7 @@ import java.util.Queue;
 
 import application.Maze;
 
-public class BFS extends SearchAlgorithms{	
+public class BFS extends SearchAlgorithm{	
 
 	// Keeps up with the child-parent trail so we can recreate the chosen path
 	HashMap<Point,Point> childParent;

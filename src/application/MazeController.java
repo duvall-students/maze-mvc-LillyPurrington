@@ -7,7 +7,8 @@ import searches.DFS;
 import searches.Greedy;
 import searches.Magic;
 import searches.RandomWalk;
-import searches.SearchAlgorithms;
+import searches.SearchAlgorithm;
+import searches.SearchFactory;
 
 public class MazeController {
 
@@ -17,13 +18,14 @@ public class MazeController {
 	/* 
 	 * Logic of the program
 	 */
-	private SearchAlgorithms algorithm;
+	private SearchAlgorithm algorithm;
 	private String search = "";		// This string tells which algorithm is currently chosen.  Anything other than 
 	// the implemented search class names will result in no search happening.
 
 	// Where to start and stop the search
 	private Point start;
 	private Point goal;
+	private SearchFactory searchFactory;
 
 	// The maze to search
 	private Maze maze;
@@ -32,6 +34,8 @@ public class MazeController {
 		start = new Point(1,1);
 		goal = new Point(numRows-2, numColumns-2);
 		maze = new Maze(numRows, numColumns);
+		searchFactory = new SearchFactory();
+		
 	}
 	
 	public void newMaze() {
@@ -53,13 +57,7 @@ public class MazeController {
 	
 	public void startSearch(String searchType) {
 		maze.reColorMaze();
-		search = searchType;
-		
-		if(search.equals("DFS")) algorithm = new DFS(maze, start, goal);
-		else if (search.equals("BFS")) algorithm = new BFS(maze, start, goal);
-		else if (search.equals("Greedy")) algorithm = new Greedy(maze, start, goal);
-		else if (search.equals("RandomWalk")) algorithm = new RandomWalk(maze, start, goal);
-		else if (search.equals("Magic")) algorithm = new Magic(maze, start, goal);
+		algorithm = searchFactory.makeSearch(searchType, maze, start, goal);
 	}
 
 	public int getCellState(Point position) {

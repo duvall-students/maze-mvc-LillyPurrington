@@ -5,7 +5,7 @@ import java.util.Stack;
 
 import application.Maze;
 
-public class DFS extends SearchAlgorithms{
+public class DFS extends SearchAlgorithm{
 	
 	public DFS(Maze mazeBlocks, Point startPoint, Point goalPoint){
 		super(mazeBlocks, startPoint, goalPoint);
